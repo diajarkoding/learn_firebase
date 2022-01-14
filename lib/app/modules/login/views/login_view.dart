@@ -16,45 +16,67 @@ class LoginView extends GetView<LoginController> {
         title: Text('Login Screen'),
         centerTitle: true,
       ),
-      body: Padding(
+      body: ListView(
         padding: const EdgeInsets.all(20.0),
-        child: Column(
-          children: [
-            TextField(
-              controller: controller.emailController,
-              decoration: InputDecoration(hintText: 'Email'),
-            ),
-            TextField(
-              controller: controller.passwordController,
-              decoration: InputDecoration(hintText: 'Password'),
-            ),
-            SizedBox(
-              height: 50,
-            ),
-            ElevatedButton(
-              onPressed: () {
-                authController.login(controller.emailController.text,
-                    controller.passwordController.text);
-              },
-              child: Text('Login'),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text('Belum punya akun ?'),
-                TextButton(
+        children: [
+          TextField(
+            controller: controller.emailController,
+            decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'Email',
+                hintText: 'Email'),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          TextField(
+            controller: controller.passwordController,
+            decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'Password',
+                hintText: 'Password'),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              TextButton(
+                onPressed: () {
+                  Get.toNamed(Routes.RESET_PASSWORD);
+                },
+                child: Text('Lupa password ?'),
+              ),
+              Container(
+                width: MediaQuery.of(context).size.width * 0.4,
+                height: 50,
+                child: ElevatedButton(
                   onPressed: () {
-                    Get.toNamed(Routes.SIGNUP);
+                    authController.login(controller.emailController.text,
+                        controller.passwordController.text);
                   },
-                  child: Text('Daftar'),
-                )
-              ],
-            )
-          ],
-        ),
+                  child: Text('Masuk'),
+                ),
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('Belum punya akun ?'),
+              TextButton(
+                onPressed: () {
+                  Get.toNamed(Routes.SIGNUP);
+                },
+                child: Text('Daftar sekarang'),
+              )
+            ],
+          ),
+        ],
       ),
     );
   }

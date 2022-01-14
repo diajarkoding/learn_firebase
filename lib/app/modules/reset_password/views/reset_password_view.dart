@@ -1,18 +1,18 @@
 import 'package:firebase/app/controllers/auth_controller.dart';
-import 'package:firebase/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import '../controllers/signup_controller.dart';
+import '../controllers/reset_password_controller.dart';
 
-class SignupView extends GetView<SignupController> {
-  final authController = Get.find<AuthController>();
+class ResetPasswordView extends GetView<ResetPasswordController> {
   @override
   Widget build(BuildContext context) {
+    final authController = Get.find<AuthController>();
+
     return Scaffold(
       appBar: AppBar(
-        title: Text('Signup Screen'),
+        title: Text('Reset Password Screen'),
         centerTitle: true,
       ),
       body: Padding(
@@ -29,25 +29,14 @@ class SignupView extends GetView<SignupController> {
             SizedBox(
               height: 20,
             ),
-            TextField(
-              controller: controller.passwordController,
-              decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'Password',
-                  hintText: 'Password'),
-            ),
-            SizedBox(
-              height: 20,
-            ),
             Container(
               width: double.infinity,
               height: 50,
               child: ElevatedButton(
                 onPressed: () {
-                  authController.signup(controller.emailController.text,
-                      controller.passwordController.text);
+                  authController.resetPassword(controller.emailController.text);
                 },
-                child: Text('Daftar'),
+                child: Text('Reset'),
               ),
             ),
             SizedBox(
