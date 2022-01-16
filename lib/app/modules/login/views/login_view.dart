@@ -13,7 +13,7 @@ class LoginView extends GetView<LoginController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Login Screen'),
+        title: Text('Login'),
         centerTitle: true,
       ),
       body: ListView(
@@ -62,17 +62,46 @@ class LoginView extends GetView<LoginController> {
             ],
           ),
           SizedBox(
+            height: 40,
+          ),
+          Row(
+            children: [
+              Expanded(
+                child: Divider(
+                  thickness: 1,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: Text(
+                  'atau',
+                  style: TextStyle(color: Colors.grey),
+                ),
+              ),
+              Expanded(
+                child: Divider(
+                  thickness: 1,
+                ),
+              ),
+            ],
+          ),
+          SizedBox(
             height: 20,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('Belum punya akun ?'),
+              Text(
+                'Belum punya akun ?',
+                style: TextStyle(color: Colors.grey),
+              ),
               TextButton(
                 onPressed: () {
                   Get.toNamed(Routes.SIGNUP);
                 },
-                child: Text('Daftar sekarang'),
+                child: Text(
+                  'Daftar sekarang',
+                ),
               )
             ],
           ),

@@ -12,8 +12,9 @@ class ResetPasswordView extends GetView<ResetPasswordController> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Reset Password Screen'),
+        title: Text('Reset Password'),
         centerTitle: true,
+        automaticallyImplyLeading: false,
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -36,7 +37,7 @@ class ResetPasswordView extends GetView<ResetPasswordController> {
                 onPressed: () {
                   authController.resetPassword(controller.emailController.text);
                 },
-                child: Text('Reset'),
+                child: Text('Reset Password'),
               ),
             ),
             SizedBox(
@@ -45,7 +46,10 @@ class ResetPasswordView extends GetView<ResetPasswordController> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text('Sudah punya akun ?'),
+                Text(
+                  'Sudah punya akun ?',
+                  style: TextStyle(color: Colors.grey),
+                ),
                 TextButton(
                   onPressed: () {
                     Get.back();

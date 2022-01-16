@@ -12,8 +12,9 @@ class SignupView extends GetView<SignupController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Signup Screen'),
+        title: Text('Signup'),
         centerTitle: true,
+        automaticallyImplyLeading: false,
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -56,7 +57,10 @@ class SignupView extends GetView<SignupController> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text('Sudah punya akun ?'),
+                Text(
+                  'Sudah punya akun ?',
+                  style: TextStyle(color: Colors.grey),
+                ),
                 TextButton(
                   onPressed: () {
                     Get.back();
